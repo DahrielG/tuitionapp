@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+    </head>
+    <body>
+        <h1>Hello Student (and/or) Parent!</h1>
+         <form method="post" action="/sendUserDataE">
+            <br>
+            <label for="fullName" placeholder="Enter full name"> What is your full name? </label>
+                <input type='text' name='fullName' required>
+            <br><br>
+            <label for="gradMonth"> What month will you graduate? </label>
+                <input type='number' name='gradMonth' min = '1' max= '12' required>
+            <br><br>    
+            <label for="gradYear"> What year will you graduate? </label>
+                <input type='number' name='gradYear' maxlength = '4'  required>
+            <br><br>    
+            <label for="currentMonth"> What month is it? </label>
+                <input type='number' name='currentMonth' min = '1' max= '12' required>
+            <br><br>    
+            <label for="currentYear"> What year is it? </label>
+                <input type='number' name='currentYear' value='Enter a number' required>
+            <br><br>
+            <input type='submit'>
+        </form>
+    </body>
+    
+</html>
+
