@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <link rel="stylesheet" href="/static/style.css" type="text/css" />
+     
+        <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/style.css" type="text/css" />
+    
     </head>
     <body>
       
@@ -9,6 +19,7 @@
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">Tuition App Name</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href = '/index' class="material-icons waves-effect waves-light">home</a></li>
                     <li><a href="/calculatorOptions">Calculator</a></li>
                     <li><a href=""> Log In </a></li>
                     <li><a href="">Sign Up</a></li>
@@ -16,8 +27,8 @@
             </div>
         </nav> 
       
-      <h1> You would need ${{extraMoney}} in gift aid to pay your tuition without loans</h1>
-      <a href = '/index'> Re-take form? </a>
+      <h4> You would need ${{extraMoney}} in gift aid to pay your tuition without loans</h4>
+      <a href = '/index' class="material-icons waves-effect waves-light">Home</a>
     
     </body>
 

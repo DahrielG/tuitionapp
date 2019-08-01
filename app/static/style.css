@@ -1,5 +1,5 @@
-nav-wrapper {
-    background-color: #26a69a;
+.nav-wrapper {
+    background-color: #26A69A;
 }
 
 html {
@@ -10,11 +10,20 @@ h1 {
     text-align: center;
 }
 
+p {
+    text-align: center;
+}
+
 form {
     text-align: center;
     
 }
 
-input{
-    width: 55%;
+.test{
+    font-size: 1rem;
+}
+
+
+label {
+    font-size: 1rem;
 }

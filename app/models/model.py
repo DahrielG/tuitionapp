@@ -40,7 +40,7 @@ def interestCalc(yearGap, advancedAmount, interestrate):
 def sad(tuition, yearGap):
     global htuition
     htuition = 0
-    ituition = tuition/4
+    ituition = int(tuition)/4
     endPoint = yearGap + 3
     for year in (0, yearGap):
         if year == yearGap:
