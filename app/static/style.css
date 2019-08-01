@@ -1,5 +1,5 @@
-nav {
-    background-color: #fffaa1;
+nav-wrapper {
+    background-color: #26a69a;
 }
 
 html {
@@ -12,5 +12,9 @@ h1 {
 
 form {
     text-align: center;
+    
 }
 
+input{
+    width: 55%;
+}

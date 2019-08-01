@@ -3,24 +3,35 @@
     
     <head>
         <link rel="stylesheet" href="/static/style.css" type="text/css" />
+        
+        <link rel="stylesheet" href="/static/style.css" type="text/css" />
+         <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
     </head>
     <body>
+        
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Tuition App Name</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/calculatorOptions">Calculator</a></li>
+                    <li><a href=""> Log In </a></li>
+                    <li><a href="">Sign Up</a></li>
+                </ul>
+            </div>
+        </nav> 
+        
+        
         <h1>Hello Student!</h1>
-         <form method="post" action="/sendUserData">
-            <label for="fullName" placeholder="Enter full name"> What is your full name? </label>
-                <input type='text' name='fullName'>
-            <label for="collegename"> What is the college's name? </label>
-                <input type='text' name='collegename'>
-            <label for="tuition"> How much is the tuition? </label>
-                <input type='text' name='tuition'>
-            <label for="gradMonth"> What month will you graduate? </label>
-                <input type='text' name='gradMonth'>
-            <label for="gradYear"> What year will you graduate? </label>
-                <input type='text' name='gradYear'>
-            <label for="currentMonth"> What month is it? </label>
-                <input type='text' name='currentMonth'>
-            <label for="currentYear"> What year is it? </label>
-                <input type='text' name='currentYear'>
+         <form method="post" action="/advancedInfo">
+            <label for="fullName" placeholder="Enter full name">What interest rate would you be saving at?</label>
+                <input type='text' name='interestrate'>
+             <label for="fullName" placeholder="Enter full name">How much could you realistically afford to put in the account weekly?</label>
+                <input type='text' name='advancedAmount'>
             <input type='submit'>
         </form>
     </body>

@@ -20,6 +20,10 @@ mongo = PyMongo(app)
 def index():
     return render_template('home.html')
 
+@app.route('/advanced')
+def advanced():
+    return render_template('advanced.html')
+
 @app.route('/calculatorOptions')
 def calculatorOptions():
     return render_template('/CalculatorOptions.html')
@@ -63,7 +67,8 @@ def calculatorE():
 
 #     # return a message to the user
 #     return "User has been added!"
-
+yearGap = 0
+tuition = 0
 
 
 @app.route('/sendUserData', methods = ['GET', 'POST'])
@@ -71,7 +76,7 @@ def sendUserData():
     if request.method == 'GET':
         return "You did not fill out the form!"
     else: 
-        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving
+        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving, yearGap
         userInfo = dict(request.form)
         collegename = userInfo["collegename"]
         tuition = userInfo["tuition"]
@@ -82,18 +87,19 @@ def sendUserData():
         currentYear = userInfo["currentYear"]
         weeksleft = model.weeksLeft(gradYear, gradMonth, currentYear, currentMonth)
         saving = model.equation(weeksleft, tuition)
+        yearGap = int(gradYear) - int(currentYear)
         schoolinfo = mongo.db.schoolinfo
         schoolinfo.insert({'collegename':collegename, 'tuition':int(tuition)})
         users = mongo.db.users
         users.insert({'fullName': fullName, 'gradMonth': gradMonth, 'gradYear': gradYear, 'currentMonth': currentMonth, 'currentYear': currentYear, 'weeksleft': weeksleft, 'saving': saving})
         return render_template("amount.html", collegename = collegename, tuition = tuition, gradMonth = gradMonth, gradYear = gradYear, currentMonth = currentMonth, currentYear = currentYear, weeksleft = weeksleft, saving = saving, fullName = fullName)
-        
+
 @app.route('/sendUserDataA', methods = ['GET', 'POST'])
 def sendUserDataA():
     if request.method == 'GET':
         return "You did not fill out the form!"
     else: 
-        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving
+        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving, yearGap
         userInfo = dict(request.form)
         collegename = "an average private college"
         tuition = 129640
@@ -104,6 +110,7 @@ def sendUserDataA():
         currentYear = userInfo["currentYear"]
         weeksleft = model.weeksLeft(gradYear, gradMonth, currentYear, currentMonth)
         saving = model.equation(weeksleft, tuition)
+        yearGap = int(gradYear) - int(currentYear)
         schoolinfo = mongo.db.schoolinfo
         schoolinfo.insert({'collegename':collegename, 'tuition':int(tuition)})
         users = mongo.db.users
@@ -115,7 +122,7 @@ def sendUserDataB():
     if request.method == 'GET':
         return "You did not fill out the form!"
     else: 
-        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving
+        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving, yearGap
         userInfo = dict(request.form)
         collegename = "an in state college"
         tuition = 95560
@@ -126,6 +133,7 @@ def sendUserDataB():
         currentYear = userInfo["currentYear"]
         weeksleft = model.weeksLeft(gradYear, gradMonth, currentYear, currentMonth)
         saving = model.equation(weeksleft, tuition)
+        yearGap = int(gradYear) - int(currentYear)
         schoolinfo = mongo.db.schoolinfo
         schoolinfo.insert({'collegename':collegename, 'tuition':int(tuition)})
         users = mongo.db.users
@@ -137,7 +145,7 @@ def sendUserDataC():
     if request.method == 'GET':
         return "You did not fill out the form!"
     else: 
-        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving
+        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving, yearGap
         userInfo = dict(request.form)
         collegename = "an average out of state college"
         tuition = 95560
@@ -148,6 +156,7 @@ def sendUserDataC():
         currentYear = userInfo["currentYear"]
         weeksleft = model.weeksLeft(gradYear, gradMonth, currentYear, currentMonth)
         saving = model.equation(weeksleft, tuition)
+        yearGap = int(gradYear) - int(currentYear)
         schoolinfo = mongo.db.schoolinfo
         schoolinfo.insert({'collegename':collegename, 'tuition':int(tuition)})
         users = mongo.db.users
@@ -159,7 +168,7 @@ def sendUserDataD():
     if request.method == 'GET':
         return "You did not fill out the form!"
     else: 
-        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving
+        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving, yearGap
         userInfo = dict(request.form)
         collegename = "an average 2-year college"
         tuition = 6880
@@ -170,6 +179,7 @@ def sendUserDataD():
         currentYear = userInfo["currentYear"]
         weeksleft = model.weeksLeft(gradYear, gradMonth, currentYear, currentMonth)
         saving = model.equation(weeksleft, tuition)
+        yearGap = int(gradYear) - int(currentYear)
         schoolinfo = mongo.db.schoolinfo
         schoolinfo.insert({'collegename':collegename, 'tuition':int(tuition)})
         users = mongo.db.users
@@ -181,7 +191,7 @@ def sendUserDataE():
     if request.method == 'GET':
         return "You did not fill out the form!"
     else: 
-        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving
+        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving, yearGap
         userInfo = dict(request.form)
         collegename = "just about any college without worry"
         tuition = 239548
@@ -192,6 +202,7 @@ def sendUserDataE():
         currentYear = userInfo["currentYear"]
         weeksleft = model.weeksLeft(gradYear, gradMonth, currentYear, currentMonth)
         saving = model.equation(weeksleft, tuition)
+        yearGap = int(gradYear) - int(currentYear)
         schoolinfo = mongo.db.schoolinfo
         schoolinfo.insert({'collegename':collegename, 'tuition':int(tuition)})
         users = mongo.db.users
@@ -214,5 +225,20 @@ def aid():
         extraMoney = model.neededAid(tuition, weeksleft, contribution)
         return render_template("newCost.html", collegename = collegename, tuition = tuition, gradMonth = gradMonth, gradYear = gradYear, currentMonth = currentMonth, currentYear = currentYear, weeksleft = weeksleft, contribution = contribution, extraMoney = extraMoney)
         
+@app.route('/advancedInfo', methods = ['GET', 'POST'])
+def advancedInfo():
+    if request.method == 'GET':
+        return "You did not fill out the form!"
+    else:
+        global collegename, tuition, fullName, gradMonth, gradYear, currentMonth, currentYear, weeksleft, saving, yearGap
+        newData = dict(request.form)
+        interestrate = newData["interestrate"]
+        advancedAmount = newData['advancedAmount']
+        totalSaved = model.interestCalc(yearGap, advancedAmount, interestrate)
+        highTuition = model.sad(tuition, yearGap)
+        elsewhere = int(highTuition) - int(totalSaved)
+        if elsewhere < 0:
+            elsewhere = 0
+        return render_template("advancedInfo.html", tuition = tuition, totalSaved = totalSaved, yearGap = yearGap, saved = model.saved, highTuition = highTuition, elsewhere = elsewhere)
         
     
