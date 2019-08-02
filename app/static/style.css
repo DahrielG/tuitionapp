@@ -27,3 +27,15 @@ form {
 label {
     font-size: 1rem;
 }
+
+section {
+    background-color: #ffffb3;
+}
+
+.parallax {
+  position:static;
+}
+
+header {
+    text-align: center;
+}

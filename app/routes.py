@@ -70,6 +70,14 @@ def calculatorE():
 yearGap = 0
 tuition = 0
 
+@app.route('/LogIn')
+def LogIn():
+    return render_template('LogIn.html')
+
+@app.route('/SignUp')
+def SignUp():
+    return render_template('SignUp.html')
+
 @app.route('/sendUserData', methods = ['GET', 'POST'])
 def sendUserData():
     if request.method == 'GET':
